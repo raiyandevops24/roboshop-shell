@@ -12,7 +12,7 @@ APP_PREREQ(){
 
   PRINT
   rm -rf {app_path} &>>$LOG_FILE
-  STAT
+  STAT $?
 
   PRINT Create App Directory
   mkdir {app_path} &>>$LOG_FILE
@@ -20,12 +20,12 @@ APP_PREREQ(){
 
   PRINT Download App Content
   curl -o /tmp/{component}.zip https://roboshop-artifacts.s3.amazonaws.com/{component}-v3.zip &>>$LOG_FILE
-  STAT
+  STAT $?
 
   cd {app_path}
   PRINT Extract App Content
   unzip /tmp/{component}.zip &>>$LOG_FILE
-  STAT
+  STAT $?
 
 
 }
