@@ -6,7 +6,7 @@ NODEJS
 
 echo Install MongoDB Client
 dnf install mongodb-mongosh -y &>>$LOG_FILE
-  if [ $? -eq 0]; then
+  if [ $? -eq 0 ]; then
     echo SUCCESS
   else
     echo FAILURE
@@ -14,7 +14,7 @@ dnf install mongodb-mongosh -y &>>$LOG_FILE
 
 echo Load Master Data
 mongosh --host mongo.dev.raiyan-m.online </app/db/master-data.js &>>$LOG_FILE
-  if [ $? -eq 0]; then
+  if [ $? -eq 0 ]; then
     echo SUCCESS
   else
     echo FAILURE
