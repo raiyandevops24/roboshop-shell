@@ -11,7 +11,7 @@ PRINT(){
 NODEJS(){
   PRINT Disable NodeJS Default Version
   dnf module disable nodejs -y &>>$LOG_FILE
-  if [ $? -eq 0 ]; then
+  if [ $? -eq 0]; then
     echo SUCCESS
   else
     echo FAILURE
