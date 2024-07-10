@@ -4,26 +4,26 @@ app_path=/usr/share/nginx/html/
 
 PRINT Dsable Nginx Default Version
 dnf module disable nginx -y &>>$LOG_FILE
-STAT
+STAT $?
 
 PRINT Enable Nginx 24 Module
 dnf module enable nginx:1.24 -y &>>$LOG_FILE
-STAT
+STAT $?
 
 PRINT Install Nginx
 dnf install nginx -y &>>$LOG_FILE
-STAT
+STAT $?
 
 PRINT Copy Nginxx Configuration File
 cp nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
-STAT
+STAT $?
 
 PRINT Enable Nginx Service
 systemctl enable nginx &>>$LOG_FILE
-STAT
+STAT $?
 
 APP_PREREQ
 
 PRINT Start Nginx Service
 systemctl restart nginx &>>$LOG_FILE
-STAT
+STAT $?
