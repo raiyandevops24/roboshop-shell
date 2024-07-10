@@ -8,6 +8,28 @@ PRINT(){
 
 }
 
+APP_PREREQ(){
+
+  PRINT
+  rm -rf {app_path} &>>$LOG_FILE
+  STAT
+
+  PRINT Create App Directory
+  mkdir {app_path} &>>$LOG_FILE
+  STAT $?
+
+  PRINT Download App Content
+  curl -o /tmp/{component}.zip https://roboshop-artifacts.s3.amazonaws.com/{component}-v3.zip &>>$LOG_FILE
+  STAT
+
+  cd {app_path}
+  PRINT Extract App Content
+  unzip /tmp/{component}.zip &>>$LOG_FILE
+  STAT
+
+
+}
+
 STAT(){
   if [ $1 -eq 0 ]; then
       echo -e "\e[32mSUCCESS\e[0m"
@@ -40,29 +62,13 @@ NODEJS(){
   STAT $?
 
   PRINT Adding Application User
-  id roboshop
+  id roboshop &>>$LOG_FILE
   if [ $? -ne 0 ]; then
     useradd roboshop &>>$LOG_FILE
   fi
   STAT $?
 
-  PRINT Removing Old Content
-  rm -rf /app &>>$LOG_FILE
-  STAT $?
-
-  PRINT Create App Directory
-  mkdir /app &>>$LOG_FILE
-  STAT $?
-
-  PRINT Download App Content
-  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}-v3.zip &>>$LOG_FILE
-  STAT $?
-
-  cd /app
-
-  PRINT Extract App Content
-  unzip /tmp/${component}.zip &>>$LOG_FILE
-  STAT $?
+  APP_PREREQ
 
   cd /app
 
