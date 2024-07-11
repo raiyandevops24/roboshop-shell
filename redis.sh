@@ -14,7 +14,8 @@ dnf install redis -y &>>$LOG_FILE
 STAT $?
 
 PRINT Update Redis Config File
-sed -i '/^bind/ c bind 0.0.0.0' -e '/protected-mode/ c protected-mode no' /etc/redis/redis.conf &>>$LOG_FILE
+sed -i '/^bind/ c bind 0.0.0.0' /etc/redis/redis.conf &>>$LOG_FILE
+sed -i '/protected-mode/ c protected-mode no' /etc/redis/redis.conf &>>$LOG_FILE
 STAT $?
 
 PRINT Start Redis Service

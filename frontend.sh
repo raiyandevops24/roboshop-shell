@@ -2,7 +2,7 @@ source common.sh
 component=frontend
 app_path=/usr/share/nginx/html/
 
-PRINT Dsable Nginx Default Version
+PRINT Disable Nginx Default Version
 dnf module disable nginx -y &>>$LOG_FILE
 STAT $?
 
