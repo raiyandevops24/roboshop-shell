@@ -10,7 +10,7 @@ PRINT(){
 
 APP_PREREQ(){
 
-  PRINT
+  PRINT Remove Old Content
   rm -rf ${app_path} &>>$LOG_FILE
   STAT $?
 
