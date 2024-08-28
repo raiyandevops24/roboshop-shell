@@ -73,9 +73,9 @@ NODEJS(){
   dnf install nodejs -y &>>$LOG_FILE
   STAT $?
 
-  PRINT Copy MongoDB repo file
-  cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOG_FILE
-  STAT $?
+#  PRINT Copy MongoDB repo file
+#  cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOG_FILE
+#  STAT $?
 
   APP_PREREQ
 
@@ -84,6 +84,7 @@ NODEJS(){
   npm install &>>$LOG_FILE
   STAT $?
 
+  SCHEMA_SETUP
   SYSTEMD_SETUP
 
 }
